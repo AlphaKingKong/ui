@@ -1,0 +1,141 @@
+
+.row {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  margin-left: 0px !important;
+}
+
+.img-bg {
+  background-color: #2B2B2B;
+}
+
+.logo-class {
+  background-color: white;
+}
+.card-white {
+  height: 100vh;
+  width:100%;
+}
+
+.mat-checkbox-inner-container {
+  height: 5px !important;
+  width: 5px !important;
+}
+.mat-checkbox-inner-container-local:checked {
+  background-color: #00A8BC !important;
+}
+a {
+  color: #1e90ff !important;
+}
+
+.button-group {
+  padding-left: 15%;
+  padding-top: 11%; // margin: auto;
+}
+
+button {
+  width: 115px;
+}
+
+.mat-raised-button {
+  // box-shadow: none !important;
+  border-radius: 4px !important;
+}
+
+
+p {
+  font-size: 24px;
+  text-align: left;
+  font-weight: 100;
+  margin-right: 90px;
+}
+
+
+.article {
+  padding-bottom: 0px !important;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 100vh;
+}
+
+.mat-icon {
+  opacity: 0.57;
+  margin-left: -37px;
+}
+
+input.mat-input-element {
+  margin-left: 12px;
+}
+.login-err-msg{
+  margin-left: 35px;
+  color: #EF5350;
+}
+
+.image-align
+{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:20%;
+}
+
+.img-logo
+{
+  position: absolute;
+  left:25%;
+  top:20%;
+  width: 50%;
+  height: 100px;
+}
+
+.img-market-bg
+{
+  position: relative;
+  left:0%;
+  top:0%;
+  height: 100%;
+  background: url("/assets/images/background/marketboats-bg-new.png")no-repeat;
+  background-size: cover;
+}
+
+.column-padding
+{
+  padding: 0px !important;
+}
+
+.link-file
+{
+  text-decoration: underline;
+  text-align: center;
+}
+body{
+  background-color: white !important;
+}
+@media (max-width: 576px) {
+  .mobile-login-responsive{
+    position: absolute;
+    top: 20%;
+  }
+  .img-logo{
+    position: absolute;
+    left:0%;
+    top:2%;
+    height: 100px;
+    width: 100%;
+    margin: auto;
+    img{
+      height: 100px;;
+      margin: auto;
+      display: block;
+    }
+  }  
+
+  .img-market-bg{
+    width: 100%;
+  }
+}

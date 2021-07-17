@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="login-form-overlay">
+    <div>
+      <div class="welcome">
+        <h2 style="font-weight: bold">Login</h2>
+        <p class="login-welcome-desc"> Welcome back ! Please login in to your account
+        </p>
+      </div>
+    </div>
+    <div>
+      <form [formGroup]="loginForm" class="form-validation">
+        <div>
+          <mat-icon class="icon-padding">mail_outline</mat-icon>
+          <mat-form-field class="mat-icon-left align-formfield">
+            <input matInput formControlName="email" [email]="true" type="email" name="email" placeholder="Email">
+            <mat-error align="start" *ngIf="loginForm?.get('email').hasError('required')"
+              (change)="showApiErrorMessage = false" class="form__error">Email is
+              required.</mat-error>
+            <mat-error align="start"
+              *ngIf="!loginForm?.get('email').valid && !loginForm?.get('email').hasError('required')" class="form__error">
+              Email is not valid.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="p0">
+          <mat-icon class="icon-padding">lock_outline</mat-icon>
+          <mat-form-field class="mat-icon-left align-formfield">
+            <input matInput formControlName="password" type="password" name="password"
+              (change)="showApiErrorMessage = false" placeholder="Password">
+            <mat-error align="start" *ngIf="loginForm?.get('password').hasError('required')" class="form__error">Password
+              is required.</mat-error>
+            <mat-error align="start" *ngIf="loginForm?.get('password').hasError('minlength')" class="form__error">
+              Min 6 characters required</mat-error>
+          </mat-form-field>
+          <span class="login-err-msg" *ngIf="showApiErrorMessage">{{apiErrorMessage}}</span>
+        </div>
+        <div class="text-center">
+          <span *ngIf="isSignInProgress" class="text-bold">Please wait...</span>
+        </div>
+        <div class="additional-info">
+          <a class="forgot-password" [routerLink]="['/auth/forgot-password']">
+            Forgot Password?
+          </a>
+        </div>
+        <div class="button-group button-style-login">
+          <button mat-raised-button [disabled]="loginForm.invalid || isSignInProgress" type="submit" (click)="onSubmit()"
+            class=primary>Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,1 +1,714 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+$primary-color: black;
+// @font-face {
+//     font-family: 'Open Sans', sans-serif;
+//     src: url(assets/fonts/Roboto-Regular.ttf) format("opentype");
+// }
+@import "~@angular/material/theming";
+$custom-typography: mat-typography-config(
+  $font-family: '"Open Sans", sans-serif',
+);
+@include mat-core($custom-typography);
+@import "~@angular/material/theming";
+// Be sure that you only ever include 'mat-core' mixin once!
+// it should not be included for each theme.
+//@include mat-core();
+// define a real custom palette (using http://mcg.mbitson.com)
+$md-mb-dark: (
+  50: black,
+  100: #c6c6c6,
+  200: #a0a0a0,
+  300: #7a7a7a,
+  400: #5e5e5e,
+  500: black,
+  600: #3b3b3b,
+  700: #323232,
+  800: #2a2a2a,
+  900: #1c1c1c,
+  A100: #f07777,
+  A200: #eb4949,
+  A400: #ff0202,
+  A700: #e70000,
+  contrast: (
+    50: #ffffff,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+$md-mb-light: (
+  50: #f0f0f7,
+  100: #fbfbfd,
+  200: #f8f8fb,
+  300: #f5f5f9,
+  400: #f2f2f8,
+  500: #f0f0f7,
+  600: #eeeef6,
+  700: #ececf5,
+  800: #e9e9f3,
+  900: #e5e5f1,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: black,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+// mandatory stuff for theming
+$mb-palette-primary: mat-palette($md-mb-dark, 50);
+$mb-palette-accent: mat-palette($md-mb-light, 50);
+// include the custom theme components into a theme object
+$mb-theme: mat-light-theme($mb-palette-primary, $mb-palette-accent);
+// include the custom theme object into the angular material theme
+@include angular-material-theme($mb-theme);
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.login-err-msg {
+  font-weight: lighter;
+  color: red;
+  font-size: 16px;
+  padding-left: 16%;
+}
+
+.link-file {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #00a8bc !important;
+}
+
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+    background-color: #212221;
+}
+
+.primary {
+  color: white;
+  // background-color: black;
+  background-color: #212221;
+}
+
+.mat-form-field-ripple {
+  background-color: #00a8bc !important;
+}
+
+.login-form-overlay {
+  background-color: white !important;
+}
+
+.centering {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 576px) {
+  .login-form-overlay {
+    background-color: white;
+    border-radius: 5px;
+  }
+  .mat-table {
+    width: 100%;
+  }
+  app-metric-cards,
+  app-metric-cards-icon {
+    margin: 10px 0;
+  }
+  .table-container {
+    overflow-y: scroll;
+  }
+}
+
+.black-background {
+  background-color: black;
+}
+
+.white-text,
+.white-text :hover,
+.white-text :active {
+  color: white !important;
+}
+
+.max-200 {
+  max-width: 200px;
+}
+
+.fit-img {
+  object-fit: contain;
+  width: 100%;
+  height: 45px;
+}
+
+.fixed-header {
+  position: fixed;
+  position: -webkit-sticky;
+  /* For macOS/iOS Safari */
+  top: 0;
+  /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+  /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.content-layout {
+  margin-top: 80px;
+  padding: 3%;
+}
+
+.white-header {
+  background-color: white;
+}
+
+.theme-background-light {
+  background-color: white;
+}
+
+.theme-background-dark {
+  background-color: black;
+}
+
+.f-w-300 {
+  font-weight: 300 !important;
+}
+
+.f-w-400 {
+  font-weight: 400 v;
+}
+
+.f-w-500 {
+  font-weight: 500 !important;
+}
+
+.f-w-600 {
+  font-weight: 600 !important;
+}
+
+.f-s-15 {
+  font-size: 16px !important;
+}
+
+.page-heading {
+  color: black;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.m-l-30 {
+  margin-left: 30px !important;
+}
+
+.table-container {
+  padding: 0 !important;
+  margin: 15px 0;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-table thead {
+  background-color: #f5f6fa;
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  color: black;
+  font-size: 10px;
+}
+
+th.mat-header-cell {
+  font-size: 13px;
+  color: white;
+  background-color: #1181b2;
+}
+
+.mat-footer-cell {
+  font-size: 11px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.p-30 {
+  padding: 30px !important;
+}
+
+.mat-dialog-padding {
+  padding: 5px 20px;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.light-icon {
+  color: #0000008a;
+}
+
+.download-btn {
+  border: 1px solid black;
+  font-size: 13px;
+  color: black;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: rgb(185, 179, 179);
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(185, 179, 179);
+}
+
+td.mat-cell {
+  max-width: 50px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  color: black;
+  font-size: 11px;
+}
+
+.text-content {
+  white-space: pre-wrap;
+}
+
+.progress-bar {
+  color: black;
+}
+
+tr {
+  cursor: pointer;
+}
+
+.textwrap {
+  white-space: nowrap;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-option-text {
+  font-size: 12px !important;
+  color: black !important;
+}
+
+.mat-form-field {
+  font-size: 13px !important;
+  color: black !important;
+}
+
+.mat-tab-label-content {
+  font-size: 15px !important;
+  font-weight: 600;
+  color: black;
+}
+
+.mat-tab-label {
+  opacity: 1 !important;
+}
+
+.mat-dialog-title {
+  color: black !important;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.mat-select-value {
+  font-size: 12px !important;
+  color: black !important;
+}
+
+.page-sub-head {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+input {
+  font-size: 11px !important;
+  color: black;
+}
+
+.loader {
+  height: fit-content !important;
+  width: fit-content !important;
+  -webkit-animation: spin 0.4s linear infinite;
+  /* Safari */
+  animation: spin 0.4s linear infinite;
+}
+
+.mat-raised-button.mat-primary[disabled] {
+  color: #656161;
+}
+
+/* Safari */
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mat-sort-header-arrow {
+  color: white !important;
+}
+
+.header-color {
+  // background: rgb(14, 154, 167);
+  // background: #535d72;
+  // background: #1181B2;
+  background: #0a4d6a;
+  color: white;
+}
+
+//campaign status classes
+%status-icon-size {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+}
+
+.paused-icon {
+  @extend %status-icon-size;
+  border: solid 2px #d36418;
+  padding: 2px;
+}
+
+.active-icon {
+  @extend %status-icon-size;
+  border: solid 2px #3680c3;
+  padding-left: 2px;
+}
+
+.cancelled-icon {
+  @extend %status-icon-size;
+  padding: 3px 2px 2px 2px;
+  border: solid 2px #ce0606;
+}
+
+.completed-icon {
+  @extend %status-icon-size;
+  padding: 2px;
+  border: solid 2px green;
+}
+
+.pre-approval-icon {
+  @extend %status-icon-size;
+  padding: 1px;
+  border: solid 2px #cd9c06;
+}
+
+//fonts sizes
+.fs10 {
+  font-size: 9.5px !important;
+}
+
+.fs12 {
+  font-size: 11px !important;
+}
+
+.fs13 {
+  font-size: 12px !important;
+}
+
+.fs14 {
+  font-size: 13px !important;
+}
+
+.fs15 {
+  font-size: 13px !important;
+}
+
+.fs16 {
+  font-size: 15px !important;
+}
+
+.fs17 {
+  font-size: 16px !important;
+}
+
+.fs18 {
+  font-size: 17px !important;
+}
+
+.fs19 {
+  font-size: 18px !important;
+}
+
+.fs20 {
+  font-size: 19px !important;
+}
+
+.fs24 {
+  font-size: 23px !important;
+}
+
+.fs34 {
+  font-size: 33px !important;
+}
+
+.mat-raised-button {
+  font-size: 13px;
+}
+
+.mat-menu-item {
+  font-size: 12px;
+}
+
+.mat-raised-button {
+  line-height: 31px !important;
+}
+
+.mat-drawer-container {
+  background: none !important;
+}
+
+// .mat-drawer-content {
+//   //background-color: white;
+// }
+
+.mat-mini-fab {
+  height: 28px !important;
+  width: 28px !important;
+  line-height: 28px !important;
+  .mat-button-wrapper {
+    padding: 3px 0 !important;
+    line-height: 10px !important;
+    font-size: 10px !important;
+  }
+}
+
+.material-icons {
+  font-size: 23px !important;
+}
+
+.mat-select-placeholder {
+  font-size: 12px !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.mat-paginator {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
+
+td {
+  a {
+    color: unset;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.mat-error {
+  color: red !important;
+}
+
+.cards {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  .item-card {
+    // width: 180px;
+    // height: 150px;
+    width: 200px;
+    height: 175px;
+    display: flex;
+    .item-card-content {
+      margin: auto;
+      flex-direction: column;
+      align-items: center;
+      .card-text {
+        margin: auto;
+        text-align: center;
+        width: fit-content;
+        margin-top: 22px;
+        font-size: 13px;
+      }
+      .card-number {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 44px;
+        // color: #4b4c4c;
+        color: #0b5a7c;
+        width: fit-content;
+        margin: auto;
+      }
+    }
+  }
+  .item-card:hover {
+    // width: 180px;
+    // height: 150px;
+    // width: 200px;
+    // height: 175px;
+    background: #c0c2cc;
+    cursor: pointer;
+  }
+}
+
+.mat-sync-icon {
+  font-family: "Material Icons" !important;
+  font-weight: normal !important;
+}
+
+.mat-ink-bar {
+  display: none !important;
+}
+
+.mat-tab-header {
+  border: none !important;
+}
+
+.mat-tab-label {
+  // background: #ebf5f7;
+  // background: rgba(68, 185, 195, 0.25);
+  // background: #cf35ef;
+  background: #88c0d8;
+  border-radius: 9px;
+  height: 36px !important;
+}
+
+.mat-tab-label-active {
+  // background: #0e9aa7 !important;
+  // background: #88c0d8 !important;
+  background: #1181b2 !important;
+  color: white !important;
+}
+
+.mat-tab-label .mat-tab-label-content {
+  font-weight: normal;
+}
+
+.greyish-black-btn {
+  // background: #4a4e4d;
+  background: #212221;
+  color: white;
+}
+
+.donwload-link{
+  text-decoration :underline !important;
+  color: #007bff !important;
+  cursor:pointer !important;
+}
+
+.swal-title {
+ font-size: 16px !important;
+    font-weight: 400 !important;
+    font-family: "Open Sans", sans-serif !important;
+    color: black !important;
+}
+.swal-wide{
+  width:850px !important;
+}
+
+
+.swal-confirm-button ,.swal-cancel-button  {
+  background-color: white  !important;
+  color: black !important;
+    // width: 73px !important;
+    font-size: 14px !important;
+    // height: 35px !important;
+    margin-left: 15px !important;
+}
+
+.swal-camp-confirm-button  {
+  background-color: white !important;
+  color: black !important;
+    font-size: 14px !important;
+    margin-left: 15px !important;
+    // height: 35px !important;
+}
+
+.swal-cancel-button:hover , .swal-cancel-button:active,.swal-cancel-button:focus ,.swal-camp-confirm-button:hover , .swal-camp-confirm-button:active,.swal-camp-confirm-button:focus , .swal-confirm-button:hover , .swal-confirm-button:active,.swal-confirm-button:focus
+{
+  border-left-color: rgb(255, 255, 255) !important; 
+    background-image: linear-gradient(rgba(193, 189, 189, 0.2),rgba(163, 162, 167, 0.2)) !important;
+    border: none !important;
+    border-image: none !important;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12) !important;
+   background : .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+  }
+  .options {
+    width:18%;
+    margin-right:20px;
+}

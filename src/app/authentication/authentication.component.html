@@ -1,3 +1,18 @@
-<p>authentication works</p>
-
-<router-outlet></router-outlet>
+<section class="container-fluid login-form-overlay">
+    <article class="article">
+        <div class="row">
+            <div class="col-md-7 col-sm-7 col-xl-7 logo-class column-padding">
+                <div class="card-white img-bg">
+                    <div class="img-market-bg">
+                        <div class="img-logo">
+                            <img id="logo" src="assets/images/background/logo.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xl-5 mobile-login-responsive">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </article>
+</section>
