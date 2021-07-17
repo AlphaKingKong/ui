@@ -32,14 +32,9 @@
           </mat-form-field>
           <span class="login-err-msg" *ngIf="showApiErrorMessage">{{apiErrorMessage}}</span>
         </div>
-        <div class="text-center">
+        <!-- <div class="text-center">
           <span *ngIf="isSignInProgress" class="text-bold">Please wait...</span>
-        </div>
-        <div class="additional-info">
-          <a class="forgot-password" [routerLink]="['/auth/forgot-password']">
-            Forgot Password?
-          </a>
-        </div>
+        </div> -->
         <div class="button-group button-style-login">
           <button mat-raised-button [disabled]="loginForm.invalid || isSignInProgress" type="submit" (click)="onSubmit()"
             class=primary>Login</button>

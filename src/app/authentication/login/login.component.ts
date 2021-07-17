@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loaderService: LoaderService
   ) { 
-      // this.buildForm();
       this.loginForm = this.formBuilder.group({
         email: this.formBuilder.control(null, [Validators.required]),
         password: this.formBuilder.control(null, [
@@ -63,24 +62,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  buildForm() {
-    // this.loginForm = this.formBuilder.group({
-    //   email: this.formBuilder.control(null, [Validators.required]),
-    //   password: this.formBuilder.control(null, [
-    //     Validators.required,
-    //     Validators.minLength(3)
-    //   ]),
-    //   isRememberMeChecked: [false]
-    // });
-
-    // this.credentials = JSON.parse(localStorage.getItem("credentials"));
-    // if (this.credentials && this.credentials !== undefined) {
-    //   this.loginForm.patchValue({
-    //     email: this.credentials.email,
-    //     password: this.credentials.password
-    //   });
-    // }
-  }
+ 
 
   onSubmit() {
     if (!this.loginForm.valid) {

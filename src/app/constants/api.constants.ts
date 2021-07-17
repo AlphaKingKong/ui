@@ -1,8 +1,6 @@
 import { environment } from '../../environments/environment';
 
-function createUrl(actionName: string): string {
-    return `${environment.apiHost}${actionName}`;
-}
+ const createUrl = (actionName: string) =>  `${environment.apiHost}${actionName}`;
 
 export const appApiResources = {
     loginApi: createUrl('auth/login'),
