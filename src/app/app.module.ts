@@ -6,17 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-interceptor.service';
-import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ApiService } from './services/api.service';
 import { HTTPStatusService } from './services/http-status.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { SnackBarService } from './services/snack-bar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
   ],
   imports: [
     HttpClientModule,
@@ -31,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HTTPStatusService,
     LocalStorageService,
     SnackBarService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,11 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap-grid.min.css";
+
+body {
+  font-family: "Open Sans", sans-serif !important;
+  margin: 0;
+}
 $primary-color: black;
 // @font-face {
 //     font-family: 'Open Sans', sans-serif;
@@ -88,10 +93,6 @@ $mb-palette-accent: mat-palette($md-mb-light, 50);
 $mb-theme: mat-light-theme($mb-palette-primary, $mb-palette-accent);
 // include the custom theme object into the angular material theme
 @include angular-material-theme($mb-theme);
-body {
-  font-family: "Open Sans", sans-serif !important;
-  margin: 0;
-}
 
 .login-err-msg {
   font-weight: lighter;

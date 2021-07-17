@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { appConstants } from 'src/app/constants/app.constants';
+import { appConstants, RoleTypes } from 'src/app/constants/app.constants';
 import { ApiService } from 'src/app/services/api.service';
 import { LoaderService } from 'src/app/services/loader.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SnackBarService, SnackBarType } from 'src/app/services/snack-bar.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loaderService: LoaderService,
     private apiService: ApiService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private localStorageService: LocalStorageService
   ) { 
       this.loginForm = this.formBuilder.group({
         email: this.formBuilder.control(null, [Validators.required]),
@@ -80,16 +82,15 @@ export class LoginComponent implements OnInit {
       const {email, password} = this.loginForm.value;
       this.apiService.login(email, password).subscribe(
         (response: any) => {
-          // this.authService.processLoginResponse(response);
-          // let kk = this.authService.getRedirectUrl();
-          // this.router.navigate([kk]).then(()=>{
-          //   this.isSignInProgress = false;
-          //   this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
-          // });
-          this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
-
-          // this.dashboardService.resetCardData();
-          // this.dashboardService.fireDashboardOverviewEvent(true);
+          const {token, user} = response;
+          if(token && user){
+            this.localStorageService.setItem(appConstants.accessTokenLocalStorage, token);
+            this.localStorageService.setItem(appConstants.accessTokenLocalStorage, token);
+            this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
+            this.router.navigateByUrl("/campaigns");
+          }else{
+            this.snackBarService.open('Something went wrong, Please try again!!', SnackBarType.Error, undefined, 3000);
+          }
         },
         err => {
           this.loaderService.loader(false);
@@ -97,6 +98,7 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this.showApiErrorMessage = true;
           this.apiErrorMessage = err.error.message;
+          this.snackBarService.open(this.apiErrorMessage, SnackBarType.Error, undefined, 3000);
         },
         () => {
           this.isSignInProgress = false;
@@ -105,4 +107,5 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
 }

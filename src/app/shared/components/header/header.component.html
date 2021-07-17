@@ -1,0 +1,12 @@
+<header>
+    <div class="top-menu">
+      <button mat-icon-button [matMenuTriggerFor]="menu" color="accent">
+        <mat-icon>user</mat-icon>
+      </button>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon matListIcon>logout</mat-icon>
+      Logout</button>
+    </mat-menu>
+    </div>
+</header>
