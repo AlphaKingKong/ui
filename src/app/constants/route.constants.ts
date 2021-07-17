@@ -12,15 +12,23 @@ export const staticRoutes = {
 
 export const ModuleRoutes = [
   {
-    module: Modules.campaigns,
-    route: 'campaigns',
-    roles: [RoleTypes.user, RoleTypes.superAdmin, RoleTypes.admin],
-    label: "Campaigns"
+    role: RoleTypes.user,
+    modules: [
+      Modules.campaigns
+    ]
   },
   {
-    module: Modules.users,
-    route: 'users',
-    roles: [RoleTypes.superAdmin, RoleTypes.admin],
-    label: "Users"
+    role: RoleTypes.admin,
+    modules: [
+      Modules.campaigns,
+      Modules.users
+    ]
+  },
+  {
+    role: RoleTypes.superAdmin,
+    modules: [
+      Modules.campaigns,
+      Modules.users
+    ]
   }
 ];

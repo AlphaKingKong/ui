@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
           const {token, user} = response;
           if(token && user){
             this.localStorageService.setItem(appConstants.accessTokenLocalStorage, token);
-            this.localStorageService.setItem(appConstants.accessTokenLocalStorage, token);
+            this.localStorageService.setItem(appConstants.userLocalStorage, user);
             this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
             this.router.navigateByUrl("/campaigns");
           }else{

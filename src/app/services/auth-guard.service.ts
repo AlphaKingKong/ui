@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 import { appConstants } from "../constants/app.constants";
-import { staticRoutes } from "../constants/route.constants";
+import { ModuleRoutes, staticRoutes } from "../constants/route.constants";
 import { LocalStorageService } from "./local-storage.service";
 
 @Injectable()
@@ -26,18 +26,13 @@ export class AuthGuardService implements CanActivate{
 
         const token = this.localStorageService.getItem(appConstants.accessTokenLocalStorage);
 
-        if(token && authenticatedRoutes.indexOf(url)){
-            if(this.canNavigate()){
-                return true;
-            }else{
-                this.routerService.navigateByUrl("/campaigns");
-                return false;
-            }
-        }else if(token && unAuthenticatedRoutes.indexOf(url)){
-            this.routerService.navigateByUrl("/auth");
+        if(token && authenticatedRoutes.indexOf(url) > -1){
+            return this.canNavigate(url);
+        }else if(token && unAuthenticatedRoutes.indexOf(url) > -1){
+            this.routerService.navigateByUrl("/campaigns");
             return false;
         }else{
-            if(authenticatedRoutes.indexOf(url)){
+            if(authenticatedRoutes.indexOf(url) > -1){
                 this.routerService.navigateByUrl("/auth");
                 return false;
             }
@@ -45,7 +40,19 @@ export class AuthGuardService implements CanActivate{
         }
       }
 
-      canNavigate(): boolean{
-        return true;
+      canNavigate(url: string): boolean{
+        const user = this.localStorageService.getItem(appConstants.userLocalStorage);
+        const moduleRoute = ModuleRoutes.filter(item => item.role === user.role);
+        const urlModule = url.split("/")[1];
+
+        if(moduleRoute && moduleRoute[0]){
+            if(moduleRoute[0].modules.indexOf(urlModule) > -1){
+                return true;
+            }else{
+                this.routerService.navigateByUrl("/"+moduleRoute);
+                return false;
+            }
+        }
+        return false;
       }
 }
