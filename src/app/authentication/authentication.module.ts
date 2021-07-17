@@ -8,7 +8,7 @@ import {MatFormFieldModule,} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ServiceModule } from '../shared/services/service.module';
+// import { ServiceModule } from '../shared/services/service.module.ts1';
 import { MatButtonModule } from '@angular/material/button';
 
 
@@ -18,8 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
     LoginComponent
   ],
   imports: [
-    ServiceModule,
-    
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -29,5 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule.forChild(AuthenticationRoutes),
     CommonModule
   ],
+  providers: [
+  ]
 })
 export class AuthenticationModule { }

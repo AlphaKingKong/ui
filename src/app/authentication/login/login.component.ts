@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { appConstants } from 'src/app/constants/app.constants';
-import { LoaderService } from 'src/app/shared/services/loader.service';
+import { ApiService } from 'src/app/services/api.service';
+import { LoaderService } from 'src/app/services/loader.service';
+import { SnackBarService, SnackBarType } from 'src/app/services/snack-bar.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private apiService: ApiService,
+    private snackBarService: SnackBarService
   ) { 
       this.loginForm = this.formBuilder.group({
         email: this.formBuilder.control(null, [Validators.required]),
@@ -73,29 +77,32 @@ export class LoginComponent implements OnInit {
     } else {
       this.loaderService.loader(true);
       this.isSignInProgress = true;
-      // this.authService.login(this.loginForm.value).subscribe(
-      //   (response: any) => {
-      //     this.authService.processLoginResponse(response);
-      //     let kk = this.authService.getRedirectUrl();
-      //     this.router.navigate([kk]).then(()=>{
-      //       this.isSignInProgress = false;
-      //       this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
-      //     });
-      //     // this.dashboardService.resetCardData();
-      //     // this.dashboardService.fireDashboardOverviewEvent(true);
-      //   },
-      //   err => {
-      //     this.loaderService.loader(false);
-      //     this.isSignInProgress = false;
-      //     this.loginForm.reset();
-      //     this.showApiErrorMessage = true;
-      //     this.apiErrorMessage = err.error.message;
-      //   },
-      //   () => {
-      //     this.isSignInProgress = false;
-      //     this.loaderService.loader(false);
-      //   }
-      // );
+      const {email, password} = this.loginForm.value;
+      this.apiService.login(email, password).subscribe(
+        (response: any) => {
+          // this.authService.processLoginResponse(response);
+          // let kk = this.authService.getRedirectUrl();
+          // this.router.navigate([kk]).then(()=>{
+          //   this.isSignInProgress = false;
+          //   this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
+          // });
+          this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
+
+          // this.dashboardService.resetCardData();
+          // this.dashboardService.fireDashboardOverviewEvent(true);
+        },
+        err => {
+          this.loaderService.loader(false);
+          this.isSignInProgress = false;
+          this.loginForm.reset();
+          this.showApiErrorMessage = true;
+          this.apiErrorMessage = err.error.message;
+        },
+        () => {
+          this.isSignInProgress = false;
+          this.loaderService.loader(false);
+        }
+      );
     }
   }
 }

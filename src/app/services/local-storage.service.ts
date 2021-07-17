@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Subject } from 'rxjs';
-import { ILocalStorageService } from '../../interfaces/service-interface';
+import { ILocalStorageService } from '../interfaces/service-interface';
 import { appApiResources } from 'src/app/constants/api.constants';
 import { HttpClient } from '@angular/common/http';
 

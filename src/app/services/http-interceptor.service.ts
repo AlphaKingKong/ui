@@ -1,5 +1,5 @@
-import { appConstants } from '../../constants/app.constants';
-import { appApiResources } from '../../constants/api.constants';
+import { appConstants } from '../constants/app.constants';
+import { appApiResources } from '../constants/api.constants';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 
