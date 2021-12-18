@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { appConstants } from 'src/app/constants/app.constants';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  showUsers: boolean = false;
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.showUsers = this.localStorageService.isAdminOrSuperAdmin;
   }
 
 }

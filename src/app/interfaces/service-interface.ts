@@ -15,6 +15,7 @@ export interface ILocalStorageService {
   setItem(key: string, value: string) : void;
   getItem(key: string): any;
   removeItem(key: string): void;
+  get isAdminOrSuperAdmin(): boolean;
   // setIndexItem(key: string, value: any): Observable<any>;
   // getIndexItem(key: string): Observable<any>;
   // clearIndexedDb(): Observable<any>;

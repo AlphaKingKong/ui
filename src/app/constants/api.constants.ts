@@ -5,6 +5,16 @@ import { environment } from '../../environments/environment';
 export const appApiResources = {
     loginApi: createUrl('auth/login'),
     getSessionUser: createUrl('user/get-session-user'),
+    getUsers: createUrl('users/get'),
+    getUsersRole: createUrl('users/get-users-role'),
+    postUsers: createUrl('users/create'),
+    putUsers: createUrl('users/update'),
+    getCampaigns: createUrl('campaigns/get'),
+    postCampaigns: createUrl('campaigns/create'),
+    putCampaigns: createUrl('campaigns/update'),
+    assignCampaign: createUrl('campaigns/assign'),
+    countries: createUrl('countries'),
+
     resetPasswordApi: createUrl('auth/reset-password'),
     forgetPasswordApi: createUrl('auth/forgot-password'),
     changePasswordApi: createUrl('auth/change-password'),

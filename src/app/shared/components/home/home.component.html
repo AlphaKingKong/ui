@@ -7,7 +7,7 @@
           <mat-icon matListIcon>request_quote</mat-icon>
           Campaigns
         </a>
-        <a mat-list-item routerLink="/users" >
+        <a *ngIf="showUsers" mat-list-item routerLink="/users" >
           <mat-icon matListIcon>person</mat-icon>
           Users
         </a>

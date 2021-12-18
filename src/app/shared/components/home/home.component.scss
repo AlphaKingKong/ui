@@ -4,10 +4,11 @@
   }
   
   .example-sidenav-content {
-    display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
+    width: calc(100% - 88px);
+    padding: 44px;
   }
   
   .example-sidenav {

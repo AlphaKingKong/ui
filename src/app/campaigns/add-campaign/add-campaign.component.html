@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>{{isEdit ? "Edit" : "Create"}} Campaign</h1>
+<div mat-dialog-content>
+    <form [formGroup]="campaignForm">
+        <mat-form-field class='width-100'>
+            <input matInput formControlName="name" type="text" name="name" placeholder="Enter Campaign Name">
+            <mat-error align="start" *ngIf="campaignForm?.get('name')?.hasError('required')" class="form__error">
+                Campaign Name is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Select Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option *ngFor="let c of countries" [value]="c.code">{{c.name}}</mat-option>
+            </mat-select>
+            <mat-error align="start" *ngIf="campaignForm?.get('country')?.hasError('required')" class="form__error">
+                Country is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Select Campaign Type</mat-label>
+            <mat-select formControlName="campaign_type">
+              <mat-option value="SIMILAR">SIMILAR</mat-option>
+              <mat-option value="UNIQUE">UNIQUE</mat-option>
+            </mat-select>
+            <mat-error align="start" *ngIf="campaignForm?.get('campaign_type')?.hasError('required')" class="form__error">
+                Campaign Type is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="offer_id" type="text" name="name" placeholder="Enter Offer ID">
+            <mat-error align="start" *ngIf="campaignForm?.get('offer_id')?.hasError('required')" class="form__error">
+                Offer ID is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="affiliate_id" type="text" name="name" placeholder="Enter Affiliate ID">
+            <mat-error align="start" *ngIf="campaignForm?.get('affiliate_id')?.hasError('required')" class="form__error">
+                Affiliate ID is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="url" type="text" name="name" placeholder="Enter Campaign URL">
+            <mat-error align="start" *ngIf="campaignForm?.get('url')?.hasError('required')" class="form__error">
+                Campaign URL is required.</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions style="float: right">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button  cdkFocusInitial [disabled]="campaignForm.invalid" (click)="saveCampaign()">Submit</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</div>

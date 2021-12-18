@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-// import { LocalStorage } from '@ngx-pwa/local-storage';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Subject } from 'rxjs';
 import { ILocalStorageService } from '../interfaces/service-interface';
 import { appApiResources } from 'src/app/constants/api.constants';
 import { HttpClient } from '@angular/common/http';
+import { appConstants } from '../constants/app.constants';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
 export class LocalStorageService implements ILocalStorageService {
@@ -12,7 +14,7 @@ export class LocalStorageService implements ILocalStorageService {
 
   constructor(
     private http: HttpClient,
-    // private indexedDb: LocalStorage
+    private indexedDb: LocalStorage
   ) { }
 
   
@@ -53,18 +55,22 @@ export class LocalStorageService implements ILocalStorageService {
     localStorage.clear();
   }
 
-  // setIndexItem(key: string, value: any): Observable<any> {
-  //   return this.indexedDb.setItem(key, value);
-  // }
+  get isAdminOrSuperAdmin(): boolean{
+    const user = this.getItem(appConstants.userLocalStorage);
+    return user?.role == 'ADMIN' || user?.role == 'SUPER_ADMIN';
+  }
 
-  // getIndexItem(key: string): Observable<any> {
-  //   return this.indexedDb.getItem(key);
-  // }
+  setIndexItem(key: string, value: any): Observable<any> {
+    return this.indexedDb.setItem(key, value);
+  }
 
-  // clearIndexedDb(): Observable<any> {
-  //   return this.indexedDb.clear();
-  // }
-  
+  getIndexItem(key: string): Observable<any> {
+    return this.indexedDb.getItem(key);
+  }
+
+  clearIndexedDb(): Observable<any> {
+    return this.indexedDb.clear();
+  }
   
 }
 

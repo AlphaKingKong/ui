@@ -6,6 +6,7 @@
 body {
   font-family: "Open Sans", sans-serif !important;
   margin: 0;
+  overflow-x: hidden;
 }
 $primary-color: black;
 // @font-face {
@@ -239,6 +240,7 @@ $mb-theme: mat-light-theme($mb-palette-primary, $mb-palette-accent);
 
 .mat-table {
   width: 100%;
+  font-size: 13px;
 }
 
 .mat-table thead {
@@ -254,13 +256,13 @@ $mb-theme: mat-light-theme($mb-palette-primary, $mb-palette-accent);
 }
 
 th.mat-header-cell {
-  font-size: 13px;
+//  font-size: 13px;
   color: white;
   background-color: #1181b2;
 }
 
 .mat-footer-cell {
-  font-size: 11px;
+  //font-size: 11px;
 }
 
 .full-width {
@@ -322,7 +324,7 @@ td.mat-cell {
   overflow: hidden !important;
   text-overflow: ellipsis;
   color: black;
-  font-size: 11px;
+  //font-size: 11px;
 }
 
 .text-content {
@@ -352,6 +354,7 @@ tr {
 .mat-form-field {
   font-size: 13px !important;
   color: black !important;
+  margin: 0 10px;
 }
 
 .mat-tab-label-content {
@@ -381,7 +384,7 @@ tr {
 }
 
 input {
-  font-size: 11px !important;
+  font-size: 14px !important;
   color: black;
 }
 

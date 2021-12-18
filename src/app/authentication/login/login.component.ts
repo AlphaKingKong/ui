@@ -88,6 +88,7 @@ export class LoginComponent implements OnInit {
             this.localStorageService.setItem(appConstants.userLocalStorage, user);
             this.snackBarService.open('user logged successfully', SnackBarType.Error, undefined, 3000);
             this.router.navigateByUrl("/campaigns");
+            this.getCountries();
           }else{
             this.snackBarService.open('Something went wrong, Please try again!!', SnackBarType.Error, undefined, 3000);
           }
@@ -108,4 +109,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
+  getCountries(){
+    this.apiService.getCountries().subscribe((data: any) => {
+      this.localStorageService.setIndexItem('countries', data).subscribe();
+    })
+  }
 }
