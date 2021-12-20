@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiHost: "http://localhost:5000/"
+  apiHost: "https://uexavphqfp.us-east-2.awsapprunner.com/"
 };
