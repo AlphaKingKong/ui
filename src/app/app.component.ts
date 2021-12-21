@@ -7,7 +7,6 @@ import { HTTPStatusService } from './services/http-status.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'PeddleGround';
 
   isLoading: boolean;
 

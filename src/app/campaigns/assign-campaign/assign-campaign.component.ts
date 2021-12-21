@@ -27,7 +27,7 @@ export class AssignCampaignComponent implements OnInit {
     console.log(this.users)
 
     this.users?.forEach((a:any) => {
-      a.assignment = this.assignments.find((u: any) => u.user_id.$oid == a._id.$oid);
+      a.assignment = this.assignments?.find((u: any) => u.user_id.$oid == a._id.$oid);
       a.is_assigned = !!a.assignment?.is_assigned;
     })
     console.log(this.users)

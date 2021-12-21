@@ -53,7 +53,7 @@ export class ManageCampaignsComponent implements OnInit {
       this.length = data.count;
       this.campaigns = data.data;
       this.campaigns.forEach((item: any) => {
-        item.countryObj = this.countries.find((c:any) => c.code === item.country)
+        item.countryObj = this.countries?.find((c:any) => c.code === item.country)
       })
       this.dataSource = new MatTableDataSource<Campaign>(this.campaigns)
       this.assignments = data.assignments;
