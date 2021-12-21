@@ -1,0 +1,13 @@
+.spin-container{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    z-index: 10;
+}
+
+.mat-progress-spinner{
+    position: absolute;
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+}

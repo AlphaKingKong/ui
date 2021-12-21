@@ -2,6 +2,7 @@ import { appConstants } from '../constants/app.constants';
 import { appApiResources } from '../constants/api.constants';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
+import { catchError, finalize, map } from 'rxjs/operators';
 
 import {
   HttpErrorResponse,
@@ -34,6 +35,18 @@ export class HttpInterceptorService implements HttpInterceptor {
           }
         })
       }
-      return next.handle(request);
+      this.httpStatusService.setHttpStatus(true);
+
+      return next.handle(request).pipe(
+        map((event: any) => {
+          return event;
+        }),
+        catchError(error => {
+          return Observable.throw(error);
+        }),
+        finalize(() => {
+          this.httpStatusService.setHttpStatus(false);
+        })
+      )
   }
 }

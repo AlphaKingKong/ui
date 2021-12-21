@@ -12,6 +12,7 @@ import { LocalStorageService } from './services/local-storage.service';
 import { SnackBarService } from './services/snack-bar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthGuardService } from './services/auth-guard.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
