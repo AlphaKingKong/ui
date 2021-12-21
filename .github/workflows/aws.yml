@@ -1,5 +1,4 @@
 
-
 name: Deploy to S3
 
 on:
@@ -36,12 +35,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Purge current build from S3 bucket
-        run: |
-          aws s3 rm s3://www.peddleground.com --recursive
+      # - name: Purge current build from S3 bucket
+      #   run: |
+      #     aws s3 rm s3://www.peddleground.com --recursive
 
       - name: Push latest build to S3 bucket
-
         run: |
           aws s3 cp ./dist/delta-ui s3://www.peddleground.com --recursive  --acl public-read
     
