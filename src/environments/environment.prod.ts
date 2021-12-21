@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiHost: "https://uexavphqfp.us-east-2.awsapprunner.com/"
+  apiHost: "https://dc2srumtf2.ap-northeast-1.awsapprunner.com/"
 };
